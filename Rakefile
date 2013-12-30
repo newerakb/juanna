@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Wanna::Application.load_tasks
+Juanna::Application.load_tasks

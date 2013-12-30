@@ -13,4 +13,4 @@ def secure_token
   end
 end
 
-Wanna::Application.config.secret_key_base = secure_token
+Juanna::Application.config.secret_key_base = secure_token
