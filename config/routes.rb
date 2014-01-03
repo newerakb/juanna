@@ -8,6 +8,8 @@ Juanna::Application.routes.draw do
   match '/signout',  to: 'sessions#destroy',     via: 'delete'
   match '/about',    to: 'static_pages#about',   via: 'get'
   match '/contact',  to: 'static_pages#contact', via: 'get'
+  get '/users/:id/makeAdmin',   to: 'users#makeAdmin',   as: 'make_admin'
+  get '/users/:id/removeAdmin', to: 'users#removeAdmin', as: 'remove_admin'
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

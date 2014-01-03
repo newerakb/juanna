@@ -1,0 +1,22 @@
+<li>
+  <%= gravatar_for user, size: 52 %>
+  <%= link_to user.name, user %>
+  <% if user.admin? %>
+    | (ADMIN)
+  <% end %>
+  <% if user.owner? %>
+    | (OWNER)
+  <% end %>
+  <% if ((current_user.admin? || current_user.owner?) && !current_user?(user) && !user.admin? && !user.owner?) || (current_user.owner? && !current_user?(user) && !user.owner?) %>
+    | <%= link_to "delete", user, method: :delete,
+                                  data: { confirm: "Really delete #{user.name}?" } %>
+  <% end %>
+  <% if current_user.owner? && !user.admin? %>
+    | <%= link_to "make admin", make_admin_path(:id => user.id),
+                                data: { confirm: "Really make #{user.name} an admin?" } %>
+  <% end %>
+  <% if current_user.owner? && user.admin? && !user.owner? %>
+    | <%= link_to "remove admin", remove_admin_path(:id => user.id),
+                                  data: { confirm: "Really remove admin from #{user.name}?" } %>
+  <% end %>
+</li>
